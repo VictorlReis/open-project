@@ -1,18 +1,25 @@
 # Define project paths
 $projectPaths = @{
-    project1 = @{
-        server = ""
-        client = ""
-        shared = ""
-        default = ""
-    }
-    project2 = @{
-        server = ""
-        client = ""
-        shared = ""
-        default = ""
+    projectExample01 = @{
+        server = @{
+            path = "C:\Users\youruser\projectExample01\server"
+            command = "npm run start"
+        }
+        client = @{
+            path = "C:\Users\youruser\projectExample01\client"
+            command = "npm run start"
+        }
+        shared = @{
+            path = "C:\Users\youruser\projectExample01\shared"
+            command = "npm run watch-all"
+        }
+        default = @{
+            path = "C:\Users\victo\projectExample01"
+            command = $null
+        }
     }
 }
+
 function Open-Project {
     param (
         [Parameter(Mandatory=$true, Position=0)]
@@ -35,10 +42,15 @@ function Open-Project {
         return
     }
 
-    Set-Location $subfolderPath
+    Set-Location $subfolderPath.path
 
     if ($r) {
-        Start-Process "npm" -ArgumentList "run start", "-NoExit"
+        $command = $subfolderPath.command
+        if ($command) {
+            Start-Process "cmd" "/c $command"
+        } else {
+            Start-Process "npm" -ArgumentList "run start", "-NoExit"
+        }
     }
 }
 
