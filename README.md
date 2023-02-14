@@ -10,7 +10,7 @@ For example:  `o <project> <subfolder>`.
 
 For example, to navigate to the `myproject-server` folder of the `myproject` project, type `o myproject server`.
 
-You can also use the `-r` switch to automatically run the command `npm run start` after changing to the folder. For example, to navigate to the `myproject-server` folder of the `myproject` project and run `npm run start`, type `o myproject server -r`.
+You can also use the `-r` switch to automatically run the command defined in the project after changing to the folder. For example, to navigate to the `myproject-server` folder of the `myproject` project and run `npm run start`, type `o myproject server -r`.
 
 #### Adding New Projects or Subdirectories
 
